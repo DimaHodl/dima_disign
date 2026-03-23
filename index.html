@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- Базовые SEO теги -->
+  <title>Дима — UI/UX Дизайнер & Создатель продуктов</title>
+  <meta name="description" content="Портфолио:Продуктовое мышление, создание интерфейсов, веб-сервисов, презентаций (Pitch Decks) и графического дизайна." />
+  <meta name="keywords" content="UI/UX дизайнер, продуктовый дизайнер, веб-дизайн, интерфейсы, Figma, создание презентаций, дизайн сайтов" />
+  <meta name="author" content="Дима" />
+
+  <!-- Иконка для вкладки браузера (Favicon) -->
+  <!-- Убедись, что формат .png или .jpg совпадает с реальным файлом -->
+  <link rel="icon" type="image/jpeg" href="images/for favikon.png" />
+  <link rel="apple-touch-icon" href="images/for favikon.png" />
+
+  <!-- Open Graph (для красивых превью в Telegram, WhatsApp, LinkedIn, VK) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Дима — UI/UX Дизайнер & Создатель продуктов" />
+  <meta property="og:description" content="Создаю лаконичные интерфейсы с фокусом на удобство и визуальную гармонию. 10+ лет опыта." />
+  <!-- Картинка, которая подтянется при отправке ссылки -->
+  <meta property="og:image" content="images/for seo.png" />
+  
+  <!-- Twitter Card (для Twitter/X и некоторых других мессенджеров) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Дима — UI/UX Дизайнер & Создатель продуктов" />
+  <meta name="twitter:description" content="Создаю лаконичные интерфейсы с фокусом на удобство и визуальную гармонию. 10+ лет опыта." />
+  <meta name="twitter:image" content="images/for seo.png" />
+
+  <!-- Подключение стилей и скриптов -->
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script> 
+</head>
+<body class="loading">
+
+  <div id="preloader" aria-label="Загрузка портфолио Димы">
+    <div class="preloader-content">
+      
+      <div class="wireframe-cube">
+        <div class="wf-face wf-front"></div>
+        <div class="wf-face wf-back"></div>
+        <div class="wf-face wf-right"></div>
+        <div class="wf-face wf-left"></div>
+        <div class="wf-face wf-top"></div>
+        <div class="wf-face wf-bottom"></div>
+      </div>
+
+      <div class="crafting-text">
+        <span id="crafting-word"> Инициализация... </span>
+      </div>
+
+    </div>
+  </div>
+  <header class="top-nav" aria-label="Главное меню">
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="#" class="nav-link" data-face="front">Главная</a>
+        <a href="#" class="nav-link" data-face="bottom">Обо мне</a>
+        <a href="#" class="nav-link" data-face="back">Проекты</a>
+        <a href="#" class="nav-link" data-face="top">Контакты</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="scene">
+    <div class="cube" id="cube">
+
+      <section id="home" class="cube-face cube-face--front hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="preamble">Дизайнер и создатель продуктов</p>
+            <h1>Привет, я Дима</h1>
+            <p class="subtitle"> Проектирование UI/UX · Одержим проектами · Vibe coding</p>
+            <a href="#" class="cta nav-link" data-face="back">Смотреть проекты</a>
+          </div>
+          <div class="hero-avatar" aria-hidden="true">
+            <img src="images/avatar for site.jpg" alt="Аватар Димы" />
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="cube-face cube-face--bottom about">
+        <h2>Обо мне</h2>
+        <p>«Создаю эстетичные и функциональные интерфейсы, объединяя дизайн и продукт. Мой опыт в сфере — менее года, но он наполнен фанатичным обучением и постоянной практикой. Я буквально живу превращением новых идей, в работающие цифровые продукты».</p>
+        <div class="tech-ticker">
+          <div class="ticker-track">
+            <!-- Первый набор -->
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma"> Figma</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/framer/0055FF" alt="Framer"> Framer</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/sketch/F7B500" alt="Sketch"> Sketch</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/notion/000000" alt="Notion"> Notion</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI"> OpenAI</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/googlegemini/8E75B2" alt="Gemini"> Gemini</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/miro/050038" alt="Miro"> Miro</div>
+            
+            <!-- Второй набор (дубликат для бесшовного цикла) -->
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma"> Figma</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/framer/0055FF" alt="Framer"> Framer</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/sketch/F7B500" alt="Sketch"> Sketch</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/notion/000000" alt="Notion"> Notion</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI"> OpenAI</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/googlegemini/8E75B2" alt="Gemini"> Gemini</div>
+            <div class="ticker-item"><img src="https://cdn.simpleicons.org/miro/050038" alt="Miro"> Miro</div>
+          </div>
+        </div>
+      </section>
+
+     <section id="projects" class="cube-face cube-face--back projects">
+        <h2>Мои проекты и услуги</h2>
+        <div class="project-grid">
+          
+          <article class="project-card" style="--delay: 0.1s;" tabindex="0" data-description="Подробное описание AcademDog: Дизайн и запуск веб-платформы. В рамках проекта был проведен полный цикл UI/UX проектирования, создана удобная навигация и современный визуальный стиль, отвечающий потребностям пользователей и целям бизнеса.">
+            <div class="project-image" style="background-image: url('images/for academdog.png'); background-size: cover; background-position: center;">
+              <img src="images/for academdog.png" alt="Скриншот проекта AcademDog" style="display: none;"/>
+            </div>
+            <h3>AcademDog</h3>
+            <p>Дизайн и запуск веб-платформы. Полный цикл UI/UX (проектирование пользовательского интерфейса и взаимодействия).</p>
+            <a href="https://www.academfeed.ru/academdog/" target="_blank" class="project-link">Смотреть сайт →</a>
+            <div class="price-tag">от 10000 рублей</div>
+          </article>
+
+          <article class="project-card" style="--delay: 0.2s;" tabindex="0" data-description="Проектирование логики и интерфейса обучающего веб-приложения LingoStack. Основной акцент был сделан на геймификации процесса обучения и создании интуитивно понятного интерфейса для пользователей всех уровней.">
+            <div class="project-image" aria-hidden="true" style="background-image: url('images/for lingvostack.png'); background-size: cover; background-position: center;"></div>
+            <h3>LingoStack</h3>
+            <p>Проектирование логики и интерфейса обучающего веб-приложения в рамках продуктового подхода.</p>
+            <div class="price-tag">договорная цена</div>
+          </article>
+
+          <article class="project-card" style="--delay: 0.3s;" tabindex="0" data-description="Создание убедительных бизнес-презентаций и кейс-стади (Pitch Decks). Работа включала в себя структурирование информации, разработку дизайна слайдов и создание визуальных метафор.">
+            <div class="project-image" aria-hidden="true" style="background-image: url('images/for pitch desk.png'); background-size: cover; background-position: center; background-color: #e8f1ff;"></div>
+            <h3>Pitch Decks (Презентации)</h3>
+            <p>Создание убедительных бизнес-презентаций и case studies (детальных разборов кейсов) для любых целей.</p>
+            <div class="price-tag">от 3000 рублей/ проект</div>
+          </article>
+
+          <article class="project-card" style="--delay: 0.4s;" tabindex="0" data-description="Реализация полного цикла создания ботов для Telegram и других платформ. От прорисовки логических схем до настройки API (программный интерфейс, позволяющий боту «общаться» с другими сайтами) и финального деплоя.">
+            <div class="project-image" aria-hidden="true" style="background-image: url('images/for chat bot.png'); background-size: cover; background-position: center; background-color: #e8f1ff;"></div>
+            <h3>Создание чат-ботов</h3>
+            <p>Создание четких сценариев взаимодействия, интуитивных алгоритмов и визуальной гармонии, которые укрепляют доверие к бренду. От первой реплики до успешного решения задачи.</p>
+            <div class="price-tag">от 10000 рублей</div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="contact" class="cube-face cube-face--top contact">
+        
+        <div class="particle-container" id="particle-scene" aria-hidden="true">
+          <div class="blob blob-1"></div>
+          <div class="blob blob-2"></div>
+          <div class="blob blob-3"></div>
+        </div>
+
+        <div class="contact-matrix">
+          <h2>Контакты</h2>
+          
+          <div class="status-badges">
+            <span class="status-badge available" data-text="Доступен для новых проектов"></span>
+          </div>
+          
+          <div class="local-context">
+            <div class="time-display">
+              <span class="time-label">Текущее время в Москве:</span>
+              <span id="moscow-time" class="time-value">--:--</span>
+            </div>
+          </div>
+          
+          <div class="social-tiles">
+            <a href="#" class="social-tile telegram" data-link="aHR0cHM6Ly90Lm1lL0RpbWFfaG9kbA==">
+              <div class="tile-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+              </div>
+              <div class="tile-content">
+                <h3>Telegram</h3>
+                <p class="obfuscated-text" data-text="QERpbWFfaG9kbA==">Connect...</p>
+              </div>
+            </a>
+
+            <a href="#" class="social-tile email" data-link="bWFpbHRvOkRJbWFtYW5zdXJvdjAxM0BnbWFpbC5jb20=">
+              <div class="tile-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <div class="tile-content">
+                <h3>Email</h3>
+                <p class="obfuscated-text" data-text="REltYW1hbnN1cm92MDEzQGdtYWlsLmNvbQ==">Connect...</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="project-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="close-modal" class="close-btn">&times;</button>
+      
+      <button id="prev-project" class="modal-nav-btn prev-btn">&#10094;</button> 
+      <button id="next-project" class="modal-nav-btn next-btn">&#10095;</button> 
+      
+      <div class="modal-details-wrapper" id="modal-anim-container">
+          <div id="modal-image-container" class="modal-image-container"></div>
+          <h2 id="modal-title">Project Title</h2>
+          <p id="modal-desc">Detailed description goes here...</p>
+          <a href="#" target="_blank" id="modal-link" class="modal-external-link">Смотреть сайт →</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
