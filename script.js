@@ -257,23 +257,48 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: false }); // preventDefault() requires passive: false
 
   // Touch gesture detection for cube rotation
-  let startX = 0;
-  let startY = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  const touchMinDistance = 40; // Reduced threshold for mobile
+  const touchMaxDuration = 500; // Max time for swipe (ms)
 
   window.addEventListener('touchstart', (e) => {
-    startX = e.changedTouches[0].screenX;
-    startY = e.changedTouches[0].screenY;
+    // Only track if not rotating and modal is not open
+    const isModalActive = modal ? modal.classList.contains('active') : false;
+    if (isRotating || isModalActive) return;
+
+    if (e.touches && e.touches.length > 0) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+    }
   }, { passive: true });
 
   window.addEventListener('touchend', (e) => {
     if (isRotating) return;
-    const diffX = startX - e.changedTouches[0].screenX;
-    const diffY = startY - e.changedTouches[0].screenY;
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-      if (diffX > 0) rotateCube(1);
-      else rotateCube(-1);
+    const isModalActive = modal ? modal.classList.contains('active') : false;
+    if (isModalActive) return;
+
+    if (e.changedTouches && e.changedTouches.length > 0) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      const touchDuration = Date.now() - touchStartTime;
+
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+
+      // Only detect horizontal swipes (ignore if vertical movement is significant)
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > touchMinDistance && touchDuration < touchMaxDuration) {
+        e.preventDefault();
+        if (diffX > 0) {
+          rotateCube(1);
+        } else {
+          rotateCube(-1);
+        }
+      }
     }
-  });
+  }, { passive: false }); // Changed to false to allow preventDefault
 
   function moveBlobs(e) {
     let pageX = e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX;
