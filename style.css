@@ -1099,3 +1099,68 @@ body {
   animation: fadeInUp 0.8s ease forwards 0.4s;
 }
 
+/* --- МОБИЛЬНЫЕ КНОПКИ НАВИГАЦИИ --- */
+.mobile-controls {
+  display: none; /* Скрываем на десктопе */
+}
+
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 320px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50px;
+    padding: 8px 20px;
+    z-index: 1000;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .mobile-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text);
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-btn:active {
+    transform: scale(0.8);
+    color: var(--accent);
+  }
+
+  .mobile-indicator {
+    display: flex;
+    gap: 8px;
+  }
+
+  .mobile-indicator .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-indicator .dot.active {
+    background: var(--accent);
+    transform: scale(1.5);
+  }
+  
+  /* Приподнимаем контент граней, чтобы нижняя панель ничего не перекрывала */
+  .cube-face {
+    padding-bottom: 100px;
+  }
+}
+

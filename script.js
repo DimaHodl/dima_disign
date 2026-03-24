@@ -170,6 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
         typeWriter(badge, badge.dataset.text);
       }
     }
+
+    // Обновление точек на мобильной панели
+    const dots = document.querySelectorAll('.mobile-indicator .dot');
+    if (dots.length > 0) {
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
+    }
   }
 
   updateActiveMenu(currentIndex);
@@ -430,4 +437,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- Управление мобильными кнопками ---
+  const mobilePrev = document.querySelector('.mobile-btn.prev-face');
+  const mobileNext = document.querySelector('.mobile-btn.next-face');
+  
+  if (mobilePrev && mobileNext) {
+    mobilePrev.addEventListener('click', (e) => {
+      e.preventDefault();
+      rotateCube(-1); // Крутим влево
+    });
+    
+    mobileNext.addEventListener('click', (e) => {
+      e.preventDefault();
+      rotateCube(1); // Крутим вправо
+    });
+  }
 });
