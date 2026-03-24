@@ -692,6 +692,7 @@ body {
   perspective: 1500px; 
   overflow: hidden; 
   z-index: 1; 
+  touch-action: pan-y;
 }
 
 .cube {
@@ -702,6 +703,7 @@ body {
   transition: transform 1s ease-in-out; 
   will-change: transform; 
   transform: translateZ(-50vh); 
+  touch-action: pan-y;
 }
 
 /* 3D cube face (section) styling */
@@ -721,6 +723,7 @@ body {
   padding-bottom: 80px;
   pointer-events: none;
   visibility: hidden;
+  touch-action: pan-y;
 }
 
 .cube-face.active {

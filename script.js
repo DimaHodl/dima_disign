@@ -256,47 +256,41 @@ document.addEventListener('DOMContentLoaded', () => {
     
   }, { passive: false }); // preventDefault() requires passive: false
 
-  // --- Улучшенный обработчик свайпов для мобильных устройств ---
-  let startX = 0;
-  let startY = 0;
+  // ==========================================
+  // Пуленепробиваемый мобильный свайп (Mobile Swipe)
+  // ==========================================
+  let touchStartX = 0;
+  let touchStartY = 0;
 
-  window.addEventListener('touchstart', (e) => {
-    if (isRotating) return;
-    const isModalActive = modal ? modal.classList.contains('active') : false;
-    if (isModalActive) return;
-
-    if (e.touches && e.touches.length > 0) {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    }
+  document.addEventListener('touchstart', function(e) {
+    // Захватываем начальные координаты касания экрана
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
   }, { passive: true });
 
-  function handleTouchEnd(e) {
-    if (isRotating || !startX || !startY) return;
+  document.addEventListener('touchend', function(e) {
+    if (isRotating) return; // Блокируем, если куб уже крутится
 
-    const isModalActive = modal ? modal.classList.contains('active') : false;
-    if (isModalActive) return;
+    let touchEndX = e.changedTouches[0].screenX;
+    let touchEndY = e.changedTouches[0].screenY;
 
-    const touch = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0] : null;
-    if (!touch) return;
+    let diffX = touchStartX - touchEndX;
+    let diffY = touchStartY - touchEndY;
 
-    const diffX = startX - touch.clientX;
-    const diffY = startY - touch.clientY;
-
-    if (Math.abs(diffX) > Math.abs(diffY) + 10 && Math.abs(diffX) > 40) {
+    // Проверяем: это свайп по горизонтали? (движение по X должно быть больше, чем по Y)
+    // И длина свайпа должна быть хотя бы 35 пикселей (защита от случайных дрожаний пальца)
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
       if (diffX > 0) {
-        rotateCube(1); // Свайп влево -> куб вправо
+        rotateCube(1); // Свайп влево -> куб крутится вправо
       } else {
-        rotateCube(-1); // Свайп вправо -> куб влево
+        rotateCube(-1); // Свайп вправо -> куб крутится влево
       }
     }
 
-    startX = 0;
-    startY = 0;
-  }
-
-  window.addEventListener('touchend', handleTouchEnd);
-  window.addEventListener('touchcancel', handleTouchEnd); // Защита от прерывания свайпа браузером
+    // Сбрасываем координаты
+    touchStartX = 0;
+    touchStartY = 0;
+  }, { passive: true });
 
   function moveBlobs(e) {
     let pageX = e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX;
