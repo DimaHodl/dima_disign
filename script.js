@@ -256,49 +256,47 @@ document.addEventListener('DOMContentLoaded', () => {
     
   }, { passive: false }); // preventDefault() requires passive: false
 
-  // Touch gesture detection for cube rotation
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchStartTime = 0;
-  const touchMinDistance = 40; // Reduced threshold for mobile
-  const touchMaxDuration = 500; // Max time for swipe (ms)
+  // --- Улучшенный обработчик свайпов для мобильных устройств ---
+  let startX = 0;
+  let startY = 0;
 
   window.addEventListener('touchstart', (e) => {
-    // Only track if not rotating and modal is not open
-    const isModalActive = modal ? modal.classList.contains('active') : false;
-    if (isRotating || isModalActive) return;
-
-    if (e.touches && e.touches.length > 0) {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      touchStartTime = Date.now();
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchend', (e) => {
     if (isRotating) return;
     const isModalActive = modal ? modal.classList.contains('active') : false;
     if (isModalActive) return;
 
-    if (e.changedTouches && e.changedTouches.length > 0) {
-      const touchEndX = e.changedTouches[0].clientX;
-      const touchEndY = e.changedTouches[0].clientY;
-      const touchDuration = Date.now() - touchStartTime;
+    if (e.touches && e.touches.length > 0) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
 
-      const diffX = touchStartX - touchEndX;
-      const diffY = touchStartY - touchEndY;
+  function handleTouchEnd(e) {
+    if (isRotating || !startX || !startY) return;
 
-      // Only detect horizontal swipes (ignore if vertical movement is significant)
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > touchMinDistance && touchDuration < touchMaxDuration) {
-        e.preventDefault();
-        if (diffX > 0) {
-          rotateCube(1);
-        } else {
-          rotateCube(-1);
-        }
+    const isModalActive = modal ? modal.classList.contains('active') : false;
+    if (isModalActive) return;
+
+    const touch = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0] : null;
+    if (!touch) return;
+
+    const diffX = startX - touch.clientX;
+    const diffY = startY - touch.clientY;
+
+    if (Math.abs(diffX) > Math.abs(diffY) + 10 && Math.abs(diffX) > 40) {
+      if (diffX > 0) {
+        rotateCube(1); // Свайп влево -> куб вправо
+      } else {
+        rotateCube(-1); // Свайп вправо -> куб влево
       }
     }
-  }, { passive: false }); // Changed to false to allow preventDefault
+
+    startX = 0;
+    startY = 0;
+  }
+
+  window.addEventListener('touchend', handleTouchEnd);
+  window.addEventListener('touchcancel', handleTouchEnd); // Защита от прерывания свайпа браузером
 
   function moveBlobs(e) {
     let pageX = e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX;

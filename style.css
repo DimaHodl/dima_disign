@@ -676,6 +676,7 @@ img {
 body {
   overflow: hidden;
   margin: 0; 
+  touch-action: pan-y; /* Фикс для мобильных свайпов */
 }
 
 /* 3D cube scene container */
